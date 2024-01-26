@@ -1,0 +1,11 @@
+{
+  "name": "carbon-hack",
+  "version": "1.0.0",
+  "description": "Carbon Hack 2024 contribution ...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chatree Akasarn",
+  "license": "MIT"
+}

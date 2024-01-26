@@ -1,0 +1,23 @@
+{
+    "name": "Carbon Hack Dev",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+   "mounts": [
+   ],
+   "runArgs": ["--privileged"],
+   "customizations": {
+       "vscode": {
+           // Set *default* container specific settings.json values on container create.
+           "settings": {
+           },
+           // Add the IDs of extensions you want installed when the container is created.
+           "extensions": [
+            "eamodio.gitlens"
+           ]
+       }
+   },
+   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/carbon-hack/,type=bind",
+   "workspaceFolder": "/workspaces/carbon-hack/",
+   "remoteUser": "root"
+  }
