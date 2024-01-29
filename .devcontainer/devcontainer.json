@@ -5,7 +5,7 @@
     },
    "mounts": [
    ],
-   "runArgs": ["--privileged"],
+   "runArgs": [],
    "customizations": {
        "vscode": {
            // Set *default* container specific settings.json values on container create.
@@ -19,5 +19,5 @@
    },
    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/carbon-hack/,type=bind",
    "workspaceFolder": "/workspaces/carbon-hack/",
-   "remoteUser": "root"
+   "remoteUser": "node"
   }
