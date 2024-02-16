@@ -1,50 +1,28 @@
-name: example
-description: a simple example manifest
+name: tdp-demo
+description:
 tags:
 initialize:
   models:
     - name: teads-curve
       model: TeadsCurveModel
-      path: "@grnsft/if-unofficial-models"
-    - name: sci-e
-      model: SciEModel
-      path: "@grnsft/if-models"
+      path: '@grnsft/if-unofficial-models'
     - name: sci-m
-      path: "@grnsft/if-models"
       model: SciMModel
-    - name: sci-o
-      model: SciOModel
-      path: "@grnsft/if-models"
-    - name: sci
-      model: SciModel
       path: "@grnsft/if-models"
 graph:
   children:
-    child: # an advanced grouping node
+    child:
       pipeline:
         - teads-curve
-        - sci-e
         - sci-m
-        - sci-o
-        - sci
       config:
-        teads-curve:
-          thermal-design-power: 65
-        sci-m:
-          total-embodied-emissions: 251000 # gCO2eq
-          time-reserved: 3600 # 1 hour in s
-          expected-lifespan: 126144000 # 4 years in seconds    
-          resources-reserved: 1 
-          total-resources: 1 
-        sci-o:
-          grid-carbon-intensity: 457 # gCO2/kwh
-        sci:
-          functional-unit-duration: 1 
-          functional-duration-time: ''
-          functional-unit: requests # factor to convert per time to per f.unit
       inputs:
-        - timestamp: '2023-07-06T00:00'
-          duration: 10
-          cpu-util: 50
-          e-net: 0.000811 #kwh     
-          requests: 380
+        - timestamp: '2023-11-02T10:35:31.820Z'
+          duration: 3600
+          thermal-design-power: 45 # Intel(R) Core(TM) i7-9850H CPU @ 2.60GHz, https://ark.intel.com/content/www/de/de/ark/products/191047/intel-core-i7-9850h-processor-12m-cache-up-to-4-60-ghz.html
+          cpu-util: 0.1
+          total-embodied-emissions: 1533.12
+          time-reserved: 1
+          expected-lifespan: 3
+          resources-reserved: 1
+          total-resources: 8
