@@ -2,43 +2,49 @@ name: tdp-demo
 description:
 tags:
 initialize:
-  models:
-    - name: teads-curve
-      model: TeadsCurveModel
-      path: "@grnsft/if-unofficial-models"
-    - name: sci-e
-      model: SciEModel
-      path: "@grnsft/if-models"
-    - name: sci-m
-      path: "@grnsft/if-models"
-      model: SciMModel
-graph:
+  plugins:
+    teads-curve:
+      path: "@grnsft/if-unofficial-plugins"
+      method: TeadsCurve
+    sci-e:
+      path: "@grnsft/if-plugins"
+      method: SciE
+    sci-m:
+      path: "@grnsft/if-plugins"
+      method: SciM
+tree:
   children:
-    child:
+    server:
       pipeline:
         - teads-curve
         - sci-e
         - sci-m
       config:
-      server:
-        inputs:
-          - timestamp: '2023-11-02T10:35:31.820Z'
-            duration: 3600 # duration is in sec
-            thermal-design-power: 45 # Intel(R) Core(TM) i7-9850H CPU @ 2.60GHz, https://ark.intel.com/content/www/de/de/ark/products/191047/intel-core-i7-9850h-processor-12m-cache-up-to-4-60-ghz.html
-            cpu-util: 0.1 # %
-            total-embodied-emissions: 1533.12
-            time-reserved: 1
-            expected-lifespan: 3
-            resources-reserved: 1
-            total-resources: 8
-      agent:
-        inputs:
-          - timestamp: '2023-11-02T10:35:31.820Z'
-            duration: 3600 # duration is in sec
-            thermal-design-power: 45 # Intel(R) Core(TM) i7-9850H CPU @ 2.60GHz, https://ark.intel.com/content/www/de/de/ark/products/191047/intel-core-i7-9850h-processor-12m-cache-up-to-4-60-ghz.html
-            cpu-util: 0.1 # %
-            total-embodied-emissions: 1533.12
-            time-reserved: 1
-            expected-lifespan: 3
-            resources-reserved: 1
-            total-resources: 8
+      inputs:
+        - timestamp: '2023-11-02T10:35:31.820Z'
+          duration: 3600 # duration is in sec
+          cpu/thermal-design-power: 45 # Intel(R) Core(TM) i7-9850H CPU @ 2.60GHz, https://ark.intel.com/content/www/de/de/ark/products/191047/intel-core-i7-9850h-processor-12m-cache-up-to-4-60-ghz.html
+          cpu/utilization: 0.1 # %
+          device/emissions-embodied: 1533.12
+          time-reserved: 1
+          device/expected-lifespan: 3
+          resources-reserved: 1
+          resources-total: 8
+          # functional-unit-time: "1 min"
+    agent:
+      pipeline:
+        - teads-curve
+        - sci-e
+        - sci-m
+      config:
+      inputs:
+        - timestamp: '2023-11-02T10:35:31.820Z'
+          duration: 3600 # duration is in sec
+          cpu/thermal-design-power: 45 # Intel(R) Core(TM) i7-9850H CPU @ 2.60GHz, https://ark.intel.com/content/www/de/de/ark/products/191047/intel-core-i7-9850h-processor-12m-cache-up-to-4-60-ghz.html
+          cpu/utilization: 0.1 # %
+          device/emissions-embodied: 1533.12
+          time-reserved: 1
+          device/expected-lifespan: 3
+          resources-reserved: 1
+          resources-total: 8
+          # functional-unit-time: "1 min"
