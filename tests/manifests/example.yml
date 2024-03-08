@@ -2,6 +2,8 @@ name: tdp-demo
 description:
 tags:
 initialize:
+  outputs:
+    - yaml
   plugins:
     teads-curve:
       path: "@grnsft/if-unofficial-plugins"
